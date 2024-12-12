@@ -1,0 +1,83 @@
+- Lista de Requisitos
+
+Início e Fim do Jogo:
+
+1. O jogo deve iniciar com uma tela de menu onde o jogador pode começar uma nova partida ou ver as pontuações anteriores.
+2. O jogo deve terminar quando o jogador não conseguir mais encaixar os tetrominos na tela.
+3. Após o fim, uma tela de "Game Over" deve ser exibida, mostrando a pontuação final.
+4. O jogador deve ter a opção de reiniciar o jogo após a tela de "Game Over".
+
+Controle dos Tetrominos:
+
+1. O jogador pode mover os tetrominos para a esquerda, direita e para baixo usando as teclas de seta ou outras teclas configuráveis.
+2. O jogador pode girar os tetrominos com uma tecla específica (por exemplo, a tecla "C").
+3. O movimento dos tetrominos deve ser contínuo para baixo automaticamente, com aumento gradual da velocidade conforme o tempo avança.
+
+Estrutura do Jogo:
+
+1. A tela de jogo deve ter um campo de jogo (geralmente 10x20, onde 10 é a largura e 20 é a altura).
+2. O campo de jogo deve ser visualizado como uma grade, onde as células podem estar vazias ou preenchidas com blocos de cores.
+3. Quando uma linha completa for formada, ela deve ser apagada e o jogador recebe pontos.
+4. O sistema de pontuação deve incrementar a pontuação do jogador a cada linha apagada (pontuação por linha aumenta conforme o nível do jogador).
+
+Níveis de Dificuldade:
+
+1. O jogo deve ter níveis de dificuldade, com aumento progressivo da velocidade dos tetrominos à medida que o jogador completa linhas ou passa de nível.
+2. O nível deve ser exibido na tela de jogo.
+
+Interface Gráfica:
+
+1. O jogo deve exibir uma área de visualização do campo de jogo e a pontuação atual.
+2. O jogador deve ser capaz de visualizar o próximo tetromino que vai cair.
+3. A interface deve ser simples e intuitiva, com uma boa escolha de cores para os tetrominos e a área de jogo.
+
+Som e Animações:
+
+1. Sons de efeito devem ser adicionados para ações como o giro do tetromino, o "game over", a eliminação de linhas e a mudança de nível.
+2. O jogo deve ter uma animação suave para a queda dos tetrominos.
+
+- Requisitos Não Funcionais
+
+Desempenho:
+
+1. O jogo deve ser responsivo e não apresentar lentidão, mesmo quando o campo de jogo está mais preenchido.
+2. As animações devem ser fluidas, sem travamentos ou delays perceptíveis.
+
+Portabilidade:
+
+1. O jogo deve ser desenvolvido de forma a ser facilmente portável para diferentes sistemas operacionais (Windows, Linux, macOS) ou navegadores web (se for baseado em JavaScript/HTML5).
+
+Facilidade de Manutenção:
+
+1. O código deve ser modular, com funções e classes bem definidas para garantir a facilidade de manutenção e expansão futura.
+2. Comentários explicativos devem ser incluídos no código para auxiliar na compreensão do funcionamento do jogo.
+
+- Estrutura do Projeto:
+
+Tela de Início:
+
+1. Jogar
+2. Ver pontuação (ou ranking)
+3. Sair
+
+Tela do Jogo:
+
+1. Exibição do campo de jogo (grade 10x20).
+2. Mostra o próximo tetromino que vai cair.
+3. Exibe a pontuação e o nível do jogador.
+4. Função de controle para movimentação e rotação do tetromino.
+5. Aumento da velocidade dos tetrominos conforme o jogo avança.
+
+Tela de Game Over:
+
+1. Mostra a pontuação final.
+2. Opções para reiniciar o jogo ou voltar ao menu principal.
+
+Critérios de Aceitação:
+
+1. O jogo deve ser jogável com controles responsivos (movimento e rotação).
+2. O jogador deve ser capaz de completar linhas, marcar pontos e passar de nível.
+3. O jogo deve exibir uma pontuação crescente com o tempo e a dificuldade.
+4. O sistema de pontuação e de níveis deve ser ajustável.
+5. O som e a animação devem ser suaves e agradáveis.
+6. O jogo deve terminar quando o jogador não conseguir mais fazer movimentos.
