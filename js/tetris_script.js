@@ -1,5 +1,79 @@
 (function() {
-    const gridGameArray = new Array(200).fill('j');
+    const gridGameArray = new Array(200).fill('0');
+    const tetrominos = [
+        {
+            value: 't',
+            list: [
+                [4, 13, 14, 15],
+                [3, 4, 5, 14],
+                [4, 14, 15, 24],
+                [4, 13, 14, 24]
+            ] 
+        },
+
+        {
+            value: 's',
+            list: [
+                [4, 5, 13, 14],
+                [4, 14, 15, 25],
+                [4, 5, 13, 14],
+                [4, 14, 15, 25]
+            ] 
+        },
+
+        {
+            value: 'z',
+            list: [
+                [4, 5, 15, 16],
+                [5, 14, 15, 24],
+                [4, 5, 15, 16],
+                [5, 14, 15, 24]
+            ] 
+        },
+
+        {
+            value: 'o',
+            list: [
+                [4, 5, 14, 15],
+                [4, 5, 14, 15],
+                [4, 5, 14, 15],
+                [4, 5, 14, 15]
+            ] 
+        },
+
+        {
+            value: 'i',
+            list: [
+                [4, 14, 24, 34],
+                [3, 4, 5, 6],
+                [4, 14, 24, 34],
+                [3, 4, 5, 6]
+            ] 
+        },
+
+        {
+            value: 'l',
+            list: [
+                [4, 5, 15, 25],
+                [5, 13, 14, 15],
+                [4, 14, 24, 25],
+                [3, 4, 5, 13]
+            ] 
+        },
+
+        {
+            value: 'j',
+            list: [
+                [4, 5, 14, 24],
+                [3, 4, 5, 15],
+                [4, 14, 23, 24],
+                [3, 13, 14, 15]
+            ] 
+        }
+    ];
+
+    let currentTetromino = [];
+    let nextTetromino = [];
 
     //Função para renderizar o titulo colorido
     function renderTitleColors() {
@@ -21,6 +95,34 @@
         }); 
 
         $title.innerHTML = newTitle;
+    }
+
+    function generateNewTetromino() {
+        let unit = Math.floor(Math.random() * tetrominos.length);
+        let position = Math.floor(Math.random() * 4);
+
+        //Valida se ambas as listas estiverem vazios cada um recebe um novo valor pois é a primeira chamada da função
+        if(nextTetromino.length === 0 && currentTetromino.length === 0) {
+            currentTetromino = {
+                value: tetrominos[unit].value,
+                positionList: tetrominos[unit].list[position]
+            }
+
+            nextTetromino = {
+                value: tetrominos[Math.floor(Math.random() * tetrominos.length)].value,
+                positionList: tetrominos[Math.floor(Math.random() * tetrominos.length)].list[Math.floor(Math.random() * 4)]
+            }
+        }
+
+        //Valida se apenas o current é vazio e o next esta preenchido pois significa que é uma nova chamada da função
+        if(nextTetromino.length > 0 && currentTetromino.length === 0) {
+            currentTetromino = nextTetromino;
+
+            nextTetromino = {
+                value: tetrominos[unit].value,
+                positionList: tetrominos[unit].list[position]
+            }
+        }
     }
 
     function drawGridGame() {
@@ -67,5 +169,6 @@
     }
 
     renderTitleColors();
+    generateNewTetromino();
     drawGridGame();
 }());
