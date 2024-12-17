@@ -74,6 +74,7 @@
 
     let currentTetromino = [];
     let nextTetromino = [];
+    let propagationStatus = true;
 
     //Função para renderizar o titulo colorido
     function renderTitleColors() {
@@ -125,6 +126,25 @@
         }
     }
 
+    function renderTetromino() {
+        currentTetromino.positionList.forEach(pos => {
+            gridGameArray[pos] = currentTetromino.value;
+
+            //Validação para limpar a posição anterior do tetromino quando for propagado
+            if(currentTetromino.positionList.indexOf(pos - 10) === -1) {
+                gridGameArray[pos - 10] = '0';
+            }
+        });
+    }
+
+    function propagateTetromino() {
+        if(propagationStatus) {
+            currentTetromino.positionList.forEach((tetro, index) => {
+                currentTetromino.positionList[index] = tetro + 10;
+            });
+        }
+    }
+
     function drawGridGame() {
         const $telaGame = document.querySelector('.conteudo_tela_jogo');
         let pixel = ``;
@@ -170,5 +190,12 @@
 
     renderTitleColors();
     generateNewTetromino();
+    renderTetromino();
     drawGridGame();
+
+    setInterval(() => {
+        propagateTetromino();
+        renderTetromino();
+        drawGridGame();
+    }, 1000);
 }());
